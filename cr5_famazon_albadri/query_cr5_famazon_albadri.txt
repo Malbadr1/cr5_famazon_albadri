@@ -1,0 +1,22 @@
+/*1.how many products were bought from a specific supplier*/
+
+SELECT orders.quantity,supplier.supplier_name FROM orders INNER JOIN supplier ON supplier.supplier_Id = orders.fk_supplier_Id WHERE orders.fk_supplier_Id = 3
+
+/*2.who purchased products on this date*/
+
+SELECT cutomers.coustmer_Id,cutomers.first_name,cutomers.last_name,orders.order_date FROM cutomers INNER JOIN orders ON orders.fk_customer_Id = cutomers.coustmer_Id WHERE orders.order_date = '2020-10-12'
+
+/*3.which order were sent between tow date, */
+
+SELECT orders.fk_product_Id,orders.quantity,shipment_status.sent_date FROM orders INNER JOIN shipment_status ON shipment_status.fk_order_Id = orders.order_Id WHERE shipment_status.sent_date BETWEEN '2020-12-12' AND '2020-12-17
+
+/*4. stock of one specific supplier*/
+
+
+SELECT supplier.supplier_name,products.stock FROM products INNER JOIN supplier ON products.fk_supplier_Id=supplier.supplier_Id WHERE products.fk_supplier_Id=2;
+
+
+
+/*5.  how many products were sent to a specific city*/
+
+SELECT orders.quantity,orders.fk_product_Id,shipment_status.fk_city FROM orders INNER JOIN shipment_status ON shipment_status.fk_order_Id = orders.order_Id WHERE shipment_status.fk_city = 2;
